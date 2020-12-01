@@ -1,10 +1,11 @@
 from aoc import timer, read_file
 from math import prod
-from itertools import permutations
+from itertools import combinations
 
 @timer
 def sum_prod(data, r=2):
-    perms = permutations(data, r=r)
+    data = sorted(data)
+    perms = combinations(data, r=r)
     for perm in perms:
         if sum(perm) == 2020:
             return prod(perm)
