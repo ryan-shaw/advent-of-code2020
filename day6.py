@@ -1,11 +1,5 @@
 from aoc import read_file
 
-def part1(data):
-    for x in data:
-        s = set()
-        [s.update(t) for t in x]
-        yield len(s)
-
 if __name__ == "__main__":
     data = []
     tmp = []
@@ -18,6 +12,6 @@ if __name__ == "__main__":
                 tmp.append(set([c for c in line]))
         data.append(tmp)
 
-    print(sum((part1(data))))
+    print(sum([len(set.union(*x)) for x in data]))
 
     print(sum([len(set.intersection(*x)) for x in data]))
