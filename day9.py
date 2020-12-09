@@ -12,6 +12,19 @@ def part1(data):
         if num not in preamble:
             return num
 
+@timer
+def part2(data, m):
+    data = [d for d in data if d < m] # discard all above
+    for x in range(len(data)):
+        value = 0
+        for y in range(x, len(data)):
+            value += data[y]
+            if value == m:
+                return min(data[x:y]) + max(data[x:y])
+
+
 if __name__ == "__main__":
     data = read_file(9, cast=int)
-    part1(data)
+    res = part1(data)
+    print(res)
+    print(part2(data, res))
